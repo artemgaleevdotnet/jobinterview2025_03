@@ -1,0 +1,8 @@
+*.dll
+*.EXE
+[Oo]bj/
+[Bb]in/
+[Pp]ackages/
+*.suo
+*.user
+.vs
