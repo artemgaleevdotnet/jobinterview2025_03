@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "testtask.filesorter.cli": {
+      "commandName": "Project",
+      "commandLineArgs": "testtask-test sort --input-file-path D:\\bigfile.txt --output-file-path D:\\sortedFile.txt"
+    }
+  }
+}
