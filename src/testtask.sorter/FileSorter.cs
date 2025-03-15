@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Reflection.PortableExecutable;
 using System.Text;
 
 namespace testtask.sorter
@@ -100,7 +98,7 @@ namespace testtask.sorter
 
                     if (line == null) continue;
 
-                    var parsedLine = new ParsedString(line);
+                    var parsedLine = new ParsedString(line, _options.Delimiter);
 
                     chunk.Add(parsedLine);
 
@@ -131,7 +129,7 @@ namespace testtask.sorter
             {
                 buffer
                     .Append(line.NumberPart)
-                    .Append(". ")
+                    .Append(_options.Delimiter)
                     .Append(line.StringPart)
                     .Append(Environment.NewLine);
 
@@ -162,7 +160,7 @@ namespace testtask.sorter
             {
                 if (!readers[i].EndOfStream)
                 {
-                    var parsedString = new ParsedString(readers[i].ReadLine());
+                    var parsedString = new ParsedString(readers[i].ReadLine(), _options.Delimiter);
 
                     minHeap.Enqueue((parsedString, i), parsedString);
                 }
@@ -176,7 +174,7 @@ namespace testtask.sorter
 
                 buffer
                     .Append(minEntry.parsedString.NumberPart)
-                    .Append(". ")
+                    .Append(_options.Delimiter)
                     .Append(minEntry.parsedString.StringPart)
                     .Append(Environment.NewLine);
 
@@ -188,7 +186,7 @@ namespace testtask.sorter
 
                 if (!readers[minEntry.fileIndex].EndOfStream)
                 {
-                    var parsedString = new ParsedString(readers[minEntry.fileIndex].ReadLine());
+                    var parsedString = new ParsedString(readers[minEntry.fileIndex].ReadLine(), _options.Delimiter);
 
                     minHeap.Enqueue((parsedString, minEntry.fileIndex), parsedString);
                 }

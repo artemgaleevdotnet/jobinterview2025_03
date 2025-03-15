@@ -2,13 +2,12 @@
 {
     internal readonly struct ParsedString
     {
-        private const string Delimiter = ". ";
-        public ParsedString(string value)
+        public ParsedString(string value, string delimiter)
         {
-            int dotIndex = value.IndexOf(Delimiter);
+            int dotIndex = value.IndexOf(delimiter);
 
             NumberPart = string.Intern(value.Substring(0, dotIndex));
-            StringPart = value.AsMemory(dotIndex + Delimiter.Length);
+            StringPart = value.AsMemory(dotIndex + delimiter.Length);
         }
 
         public ReadOnlyMemory<char> StringPart { get; }

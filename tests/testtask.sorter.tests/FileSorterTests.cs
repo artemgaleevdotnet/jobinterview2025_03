@@ -80,7 +80,7 @@ namespace testtask.sorter.tests
 
             for (int i = 1; i < lines.Length; i++) 
             {
-                var compareValue = string.Compare(prevLine[prevLine.IndexOf(". ")..], lines[i][lines[i].IndexOf(". ")..]);
+                var compareValue = string.Compare(prevLine[prevLine.IndexOf(". ")..], lines[i][lines[i].IndexOf(". ")..], StringComparison.Ordinal);
 
                 if (compareValue > 0)
                 {

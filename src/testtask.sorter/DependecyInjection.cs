@@ -15,6 +15,7 @@ namespace testtask.sorter
                     x.ReadBufferSize = 64 * 1024;
                     x.MemoryUsageFactor = 0.25;
                     x.MaxStringSize = 100;
+                    x.Delimiter = ". ";
                 });
         }
     }

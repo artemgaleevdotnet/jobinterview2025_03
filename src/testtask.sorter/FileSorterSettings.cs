@@ -6,5 +6,6 @@
         public int ReadBufferSize { get; set; }
         public double MemoryUsageFactor { get; set; }
         public int MaxStringSize { get; set; }
+        public string Delimiter { get; internal set; } = null!;
     }
 }
